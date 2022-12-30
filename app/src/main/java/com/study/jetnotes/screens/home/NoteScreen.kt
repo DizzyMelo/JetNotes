@@ -1,5 +1,6 @@
 package com.study.jetnotes.screens.home
 
+import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,6 +26,7 @@ import com.study.jetnotes.data.NotesDateSource
 import com.study.jetnotes.model.Note
 import java.time.format.DateTimeFormatter
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun NoteScreen(
     notes: List<Note>,
