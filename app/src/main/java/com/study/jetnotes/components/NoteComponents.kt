@@ -92,10 +92,10 @@ fun NoteRow(modifier: Modifier = Modifier, note: Note, onNoteClicked: (Note) -> 
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-            Text(
-                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
-                style = MaterialTheme.typography.caption
-            )
+//            Text(
+//                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
+//                style = MaterialTheme.typography.caption
+//            )
         }
     }
 }
