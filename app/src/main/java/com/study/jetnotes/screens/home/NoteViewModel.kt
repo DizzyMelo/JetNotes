@@ -13,9 +13,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NoteViewModel @Inject constructor(private val noteRepository: NoteRepository) : ViewModel() {
-//    private var noteList = mutableStateListOf<Note>()
     private val _noteList = MutableStateFlow<List<Note>>(emptyList())
-    private val noteList = _noteList.asStateFlow()
+    val noteList = _noteList.asStateFlow()
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -30,12 +29,9 @@ class NoteViewModel @Inject constructor(private val noteRepository: NoteReposito
         }
     }
 
-    suspend fun addNote(note: Note) = viewModelScope.launch { noteRepository.addNote(note) }
-
-    suspend fun updateNote(note: Note) = viewModelScope.launch { noteRepository.updateNote(note) }
-
-    suspend fun removeNote(note: Note)  = viewModelScope.launch { noteRepository.deleteNote(note) }
-
+    fun addNote(note: Note) = viewModelScope.launch { noteRepository.addNote(note) }
+    fun updateNote(note: Note) = viewModelScope.launch { noteRepository.updateNote(note) }
+    fun removeNote(note: Note)  = viewModelScope.launch { noteRepository.deleteNote(note) }
     fun getAllNotes(): StateFlow<List<Note>> = noteList
 
 }
