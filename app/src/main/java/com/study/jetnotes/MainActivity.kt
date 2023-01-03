@@ -9,9 +9,13 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ComposeCompilerApi
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.study.jetnotes.navigation.NotesNavigation
+import com.study.jetnotes.screens.home.NoteScreen
+import com.study.jetnotes.screens.home.NoteViewModel
 import com.study.jetnotes.ui.theme.JetNotesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,7 +25,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApp {
-                NotesNavigation()
+                val noteViewModel: NoteViewModel = viewModel()
+                NotesApp(noteViewModel)
             }
         }
     }
@@ -38,4 +43,15 @@ fun MyApp(content: @Composable () -> Unit) {
             content()
         }
     }
+}
+
+@Composable
+fun NotesApp(noteViewModel: NoteViewModel) {
+    val notesList = noteViewModel.noteList.collectAsState().value
+
+    NoteScreen(
+        notes = notesList,
+        onAddNote = { noteViewModel.addNote(it) },
+        onRemoveNote = { noteViewModel.removeNote(it) }
+    )
 }

@@ -19,20 +19,8 @@ fun NotesNavigation() {
         startDestination = NotesScreens.NoteScreen.name,
         builder = {
             composable(route = NotesScreens.NoteScreen.name) {
-                val noteViewModel: NoteViewModel = viewModel()
-                NotesApp(noteViewModel)
+
             }
         }
-    )
-}
-
-@Composable
-fun NotesApp(noteViewModel: NoteViewModel) {
-    val notesList = noteViewModel.noteList.collectAsState().value
-
-    NoteScreen(
-        notes = notesList,
-        onAddNote = { noteViewModel.addNote(it) },
-        onRemoveNote = { noteViewModel.removeNote(it) }
     )
 }
