@@ -21,6 +21,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.study.jetnotes.model.Note
+import com.study.jetnotes.util.formatDate
 import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -92,10 +93,10 @@ fun NoteRow(modifier: Modifier = Modifier, note: Note, onNoteClicked: (Note) -> 
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-//            Text(
-//                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
-//                style = MaterialTheme.typography.caption
-//            )
+            Text(
+                text = formatDate(note.entryDate),
+                style = MaterialTheme.typography.caption
+            )
         }
     }
 }
