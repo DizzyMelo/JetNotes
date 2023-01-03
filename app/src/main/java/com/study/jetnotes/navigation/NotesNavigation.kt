@@ -1,13 +1,11 @@
 package com.study.jetnotes.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.study.jetnotes.data.NotesDateSource
-import com.study.jetnotes.model.Note
 import com.study.jetnotes.screens.home.NoteScreen
 import com.study.jetnotes.screens.home.NoteViewModel
 
@@ -29,8 +27,8 @@ fun NotesNavigation() {
 }
 
 @Composable
-fun NotesApp(noteViewModel: NoteViewModel = viewModel()) {
-    val notesList = noteViewModel.getAllNotes()
+fun NotesApp(noteViewModel: NoteViewModel) {
+    val notesList = noteViewModel.noteList.collectAsState().value
 
     NoteScreen(
         notes = notesList,
