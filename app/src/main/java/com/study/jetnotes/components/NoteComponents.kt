@@ -1,6 +1,7 @@
+@file:Suppress("OPT_IN_IS_NOT_ENABLED")
+
 package com.study.jetnotes.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,7 +23,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.study.jetnotes.model.Note
 import com.study.jetnotes.util.formatDate
-import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
